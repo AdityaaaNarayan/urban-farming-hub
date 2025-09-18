@@ -14,6 +14,13 @@ interface PlannerData {
   environment: string;
 }
 
+interface PlannerResult {
+  cropSuggestion: string;
+  sizingTips: string;
+  environmentalTips: string;
+  formData: PlannerData;
+}
+
 export const PlannerSection = () => {
   const [formData, setFormData] = useState<PlannerData>({
     roofSize: 0,
@@ -21,7 +28,7 @@ export const PlannerSection = () => {
     temperature: 0,
     environment: ""
   });
-  const [plannerResult, setPlannerResult] = useState<string | null>(null);
+  const [plannerResult, setPlannerResult] = useState<PlannerResult | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const { toast } = useToast();
 
@@ -75,68 +82,14 @@ export const PlannerSection = () => {
         break;
     }
 
-    const customPlan = `
-      <div class="space-y-6">
-        <div class="bg-gradient-primary/10 rounded-lg p-4">
-          <h3 class="font-bold text-lg mb-2 flex items-center">
-            <span class="mr-2">🌿</span> Your Custom Urban Farm Plan
-          </h3>
-          <p><strong>Space:</strong> ${formData.roofSize} sq.ft | <strong>Sunlight:</strong> ${formData.sunlight} hrs/day | <strong>Environment:</strong> ${formData.environment}</p>
-        </div>
+    const result: PlannerResult = {
+      cropSuggestion,
+      sizingTips,
+      environmentalTips,
+      formData
+    };
 
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="bg-leaf/10 rounded-lg p-4">
-            <h4 class="font-semibold mb-3 flex items-center text-leaf">
-              <span class="mr-2">🌱</span> Recommended Crops
-            </h4>
-            <p class="text-sm leading-relaxed">Best for your conditions: ${cropSuggestion}</p>
-          </div>
-
-          <div class="bg-growth/10 rounded-lg p-4">
-            <h4 class="font-semibold mb-3 flex items-center text-growth">
-              <span class="mr-2">📏</span> Space Optimization
-            </h4>
-            <p class="text-sm leading-relaxed">${sizingTips}</p>
-          </div>
-        </div>
-
-        <div class="bg-accent/10 rounded-lg p-4">
-          <h4 class="font-semibold mb-3 flex items-center text-accent">
-            <span class="mr-2">🌍</span> Environment Tips
-          </h4>
-          <p class="text-sm leading-relaxed">${environmentalTips}</p>
-        </div>
-
-        <div class="bg-secondary/50 rounded-lg p-4">
-          <h4 class="font-semibold mb-3">📅 4-Week Implementation Plan</h4>
-          <div class="space-y-2 text-sm">
-            <div class="flex items-start space-x-2">
-              <CheckCircle class="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-              <div><strong>Week 1:</strong> Clean and prepare the space, measure areas, and plan layout</div>
-            </div>
-            <div class="flex items-start space-x-2">
-              <CheckCircle class="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-              <div><strong>Week 2:</strong> Set up containers, install irrigation system, and prepare soil mix</div>
-            </div>
-            <div class="flex items-start space-x-2">
-              <CheckCircle class="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-              <div><strong>Week 3:</strong> Plant your selected crops and set up support structures</div>
-            </div>
-            <div class="flex items-start space-x-2">
-              <CheckCircle class="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-              <div><strong>Week 4:</strong> Establish maintenance routine - water every 2 days, monitor growth</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-sun/10 rounded-lg p-4 text-center">
-          <h4 class="font-semibold mb-2 text-sun">🎯 Success Tips</h4>
-          <p class="text-sm">Start small, observe daily, keep a garden journal, and gradually expand as you gain experience!</p>
-        </div>
-      </div>
-    `;
-
-    setPlannerResult(customPlan);
+    setPlannerResult(result);
     setIsGenerating(false);
 
     toast({
@@ -248,7 +201,94 @@ export const PlannerSection = () => {
           {plannerResult && (
             <Card className="mt-8 shadow-floating bg-gradient-card">
               <CardContent className="p-6">
-                <div dangerouslySetInnerHTML={{ __html: plannerResult }} />
+                <div className="space-y-6">
+                  {/* Header */}
+                  <div className="bg-primary/10 rounded-lg p-4">
+                    <h3 className="font-bold text-lg mb-2 flex items-center">
+                      <span className="mr-2">🌿</span> Your Custom Urban Farm Plan
+                    </h3>
+                    <p className="text-card-foreground">
+                      <strong>Space:</strong> {plannerResult.formData.roofSize} sq.ft | {" "}
+                      <strong>Sunlight:</strong> {plannerResult.formData.sunlight} hrs/day | {" "}
+                      <strong>Environment:</strong> {plannerResult.formData.environment}
+                    </p>
+                  </div>
+
+                  {/* Two-column grid */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-leaf/10 rounded-lg p-4">
+                      <h4 className="font-semibold mb-3 flex items-center text-leaf">
+                        <span className="mr-2">🌱</span> Recommended Crops
+                      </h4>
+                      <p className="text-sm leading-relaxed text-card-foreground">
+                        Best for your conditions: {plannerResult.cropSuggestion}
+                      </p>
+                    </div>
+
+                    <div className="bg-growth/10 rounded-lg p-4">
+                      <h4 className="font-semibold mb-3 flex items-center text-growth">
+                        <span className="mr-2">📏</span> Space Optimization
+                      </h4>
+                      <p className="text-sm leading-relaxed text-card-foreground">
+                        {plannerResult.sizingTips}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Environment tips */}
+                  <div className="bg-accent/10 rounded-lg p-4">
+                    <h4 className="font-semibold mb-3 flex items-center text-accent">
+                      <span className="mr-2">🌍</span> Environment Tips
+                    </h4>
+                    <p className="text-sm leading-relaxed text-card-foreground">
+                      {plannerResult.environmentalTips}
+                    </p>
+                  </div>
+
+                  {/* Implementation plan */}
+                  <div className="bg-secondary/50 rounded-lg p-4">
+                    <h4 className="font-semibold mb-3 text-card-foreground flex items-center">
+                      <Calendar className="h-5 w-5 mr-2" />
+                      📅 4-Week Implementation Plan
+                    </h4>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex items-start space-x-3">
+                        <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                        <div className="text-card-foreground">
+                          <strong>Week 1:</strong> Clean and prepare the space, measure areas, and plan layout
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                        <div className="text-card-foreground">
+                          <strong>Week 2:</strong> Set up containers, install irrigation system, and prepare soil mix
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                        <div className="text-card-foreground">
+                          <strong>Week 3:</strong> Plant your selected crops and set up support structures
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                        <div className="text-card-foreground">
+                          <strong>Week 4:</strong> Establish maintenance routine - water every 2 days, monitor growth
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Success tips */}
+                  <div className="bg-sun/10 rounded-lg p-4 text-center">
+                    <h4 className="font-semibold mb-2 text-sun flex items-center justify-center">
+                      🎯 Success Tips
+                    </h4>
+                    <p className="text-sm text-card-foreground">
+                      Start small, observe daily, keep a garden journal, and gradually expand as you gain experience!
+                    </p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           )}
