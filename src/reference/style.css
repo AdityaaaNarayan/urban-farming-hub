@@ -1,0 +1,167 @@
+/* General */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: url("images/bg-plants.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #222;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(240, 253, 244, 0.9);
+  z-index: -1;
+}
+
+nav {
+  background: #16a34a;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+section {
+  padding: 2rem;
+  border-bottom: 1px solid #ddd;
+  background: rgba(255, 255, 255, 0.85);
+  margin: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+  color: #14532d;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+ul li {
+  margin: 0.5rem 0;
+}
+
+/* Planner Form */
+#planner-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+#planner-form input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+#planner-form button {
+  padding: 10px;
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#planner-form button:hover {
+  background: #15803d;
+}
+
+/* Chatbot */
+#chat-window {
+  background: #fff;
+  height: 250px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#user-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+button {
+  padding: 10px 15px;
+  background: #16a34a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+button:hover {
+  background: #15803d;
+}
+
+.message {
+  margin: 6px 0;
+  padding: 8px 12px;
+  border-radius: 12px;
+  max-width: 75%;
+  word-wrap: break-word;
+}
+.user {
+  background: #dbeafe;
+  margin-left: auto;
+  text-align: right;
+}
+.ai {
+  background: #dcfce7;
+  margin-right: auto;
+  text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  section {
+    margin: 0.5rem;
+    padding: 1.2rem;
+  }
+
+  nav {
+    font-size: 1.2rem;
+  }
+
+  #chat-window {
+    height: 200px;
+  }
+}
+
+
+/* Navbar links */
+.nav-links {
+  margin-top: 0.5rem;
+}
+.nav-links a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Improve chat input on mobile */
+@media (max-width: 600px) {
+  .chat-input {
+    flex-direction: column;
+  }
+  .chat-input button {
+    width: 100%;
+  }
+}

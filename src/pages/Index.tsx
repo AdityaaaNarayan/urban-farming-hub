@@ -1,12 +1,28 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Navigation } from "@/components/Navigation";
+import { HeroSection } from "@/components/HeroSection";
+import { GuidesSection } from "@/components/GuidesSection";
+import { PlannerSection } from "@/components/PlannerSection";
+import { ChatBot } from "@/components/ChatBot";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <main>
+        <HeroSection />
+        <GuidesSection />
+        <PlannerSection />
+        <ChatBot />
+      </main>
+      
+      {/* Footer */}
+      <footer className="bg-gradient-hero py-8 text-center">
+        <div className="container mx-auto px-4">
+          <p className="text-primary-foreground/80">
+            🌱 Built with love for urban farmers everywhere
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
