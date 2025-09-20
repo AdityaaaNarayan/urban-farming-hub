@@ -22,20 +22,20 @@ export const HeroSection = () => {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-hero/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/50 to-transparent" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-primary-foreground mb-6 leading-tight drop-shadow-lg">
             Welcome to{" "}
             <span className="bg-gradient-to-r from-accent to-growth bg-clip-text text-transparent">
               Urban Farming
             </span>
           </h1>
           
-          <p className="text-xl sm:text-2xl text-white mb-8 leading-relaxed max-w-3xl mx-auto font-medium">
+          <p className="text-xl sm:text-2xl text-white mb-8 leading-relaxed max-w-3xl mx-auto font-medium drop-shadow-md">
             Transform your urban spaces into thriving green gardens. Learn vertical farming, 
             rooftop gardening, and sustainable agriculture practices for modern city living.
           </p>
