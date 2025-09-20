@@ -35,27 +35,27 @@ export const HeroSection = () => {
             </span>
           </h1>
           
-          <p className="text-xl sm:text-2xl text-primary-foreground/90 mb-8 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-xl sm:text-2xl text-white mb-8 leading-relaxed max-w-3xl mx-auto font-medium">
             Transform your urban spaces into thriving green gardens. Learn vertical farming, 
             rooftop gardening, and sustainable agriculture practices for modern city living.
           </p>
 
           {/* Features Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12 max-w-2xl mx-auto">
-            <div className="bg-card/10 backdrop-blur-sm rounded-lg p-4 border border-primary-foreground/20">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
               <Building className="h-8 w-8 text-accent mx-auto mb-2" />
-              <h3 className="text-primary-foreground font-semibold mb-1">Vertical Farming</h3>
-              <p className="text-primary-foreground/80 text-sm">Maximize yield in minimal space</p>
+              <h3 className="text-white font-semibold mb-1">Vertical Farming</h3>
+              <p className="text-white/90 text-sm">Maximize yield in minimal space</p>
             </div>
-            <div className="bg-card/10 backdrop-blur-sm rounded-lg p-4 border border-primary-foreground/20">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
               <Leaf className="h-8 w-8 text-growth mx-auto mb-2" />
-              <h3 className="text-primary-foreground font-semibold mb-1">Rooftop Gardens</h3>
-              <p className="text-primary-foreground/80 text-sm">Transform unused roof space</p>
+              <h3 className="text-white font-semibold mb-1">Rooftop Gardens</h3>
+              <p className="text-white/90 text-sm">Transform unused roof space</p>
             </div>
-            <div className="bg-card/10 backdrop-blur-sm rounded-lg p-4 border border-primary-foreground/20">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
               <Droplets className="h-8 w-8 text-blue-400 mx-auto mb-2" />
-              <h3 className="text-primary-foreground font-semibold mb-1">Smart Irrigation</h3>
-              <p className="text-primary-foreground/80 text-sm">Water-efficient growing systems</p>
+              <h3 className="text-white font-semibold mb-1">Smart Irrigation</h3>
+              <p className="text-white/90 text-sm">Water-efficient growing systems</p>
             </div>
           </div>
 
@@ -73,7 +73,7 @@ export const HeroSection = () => {
               variant="outline" 
               size="xl"
               onClick={() => scrollToSection('planner')}
-              className="min-w-48 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+              className="min-w-48 border-white/50 bg-white/10 text-white hover:bg-white/20 hover:border-white backdrop-blur-sm"
             >
               Get Custom Plan
             </Button>
@@ -86,7 +86,7 @@ export const HeroSection = () => {
             variant="ghost"
             size="icon"
             onClick={() => scrollToSection('guides')}
-            className="text-primary-foreground hover:bg-primary-foreground/10 rounded-full"
+            className="text-white hover:bg-white/10 rounded-full"
           >
             <ArrowDown className="h-6 w-6" />
           </Button>
