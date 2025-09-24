@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Welcome to Vertical & Rooftop Farming project
 
 ## Project info
 
@@ -8,9 +8,8 @@
 
 There are several ways of editing your application.
 
-**Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/edfaa44d-a93d-4ddf-945f-53e2402f0fa9) and start prompting.
+Simply visit the (https://lovable.dev/projects/edfaa44d-a93d-4ddf-945f-53e2402f0fa9) and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
